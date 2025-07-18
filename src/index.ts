@@ -57,14 +57,27 @@ export const recipeGeneratorFlow = ai.defineFlow(
   }
 );
 
+import { postgresFlow } from "./postgresFlow";
+
 // Run the flow
 async function main() {
+  // Run the recipe generator flow
   const recipe = await recipeGeneratorFlow({
     ingredient: "avocado",
     dietaryRestrictions: "vegetarian",
   });
+  console.log("Recipe:", recipe);
 
-  console.log(recipe);
+  // Run the PostgreSQL flow
+  // Replace with your actual database connection details
+  const dbResult = await postgresFlow({
+    user: "your_user",
+    host: "your_host",
+    database: "your_database",
+    password: "your_password",
+    port: 5432,
+  });
+  console.log("Database Result:", dbResult);
 }
 
 main().catch(console.error);
