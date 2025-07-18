@@ -1,0 +1,23 @@
+{
+  "name": "genkit-new-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@genkit-ai/flow": "^0.5.17",
+    "@genkit-ai/googleai": "^1.15.1",
+    "genkit": "^1.15.1",
+    "genkitx-plugin-postgres": "file:../genkitx-postgres-iox",
+    "genkitx-plugin-template": "^0.0.1-12"
+  }
+}
