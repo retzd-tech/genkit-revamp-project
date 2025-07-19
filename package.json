@@ -18,8 +18,8 @@
     "@genkit-ai/flow": "^0.5.17",
     "@genkit-ai/googleai": "^1.15.1",
     "genkit": "^1.15.1",
-    "genkitx-plugin-postgres": "file:../genkitx-postgres-iox",
     "genkitx-plugin-template": "^0.0.1-12",
+    "genkitx-plugin-template-2025": "file:../genkitx-plugin-template-2025",
     "pg": "^8.16.3"
   }
 }

@@ -1,15 +1,18 @@
 import { googleAI } from "@genkit-ai/googleai";
 import { genkit, z } from "genkit";
+import { Client } from "pg";
+
+import { postgresFlow } from "genkitx-plugin-template-2025";
 
 // Initialize Genkit with the Google AI plugin
 const ai = genkit({
-  plugins: [
-    googleAI(),
-  ],
+  plugins: [googleAI()],
   model: googleAI.model("gemini-2.5-flash", {
     temperature: 0.8,
   }),
 });
+
+export const databaseFlow = postgresFlow(ai);
 
 // Define input schema
 const RecipeInputSchema = z.object({
@@ -57,27 +60,49 @@ export const recipeGeneratorFlow = ai.defineFlow(
   }
 );
 
-import { postgresFlow } from "./postgresFlow";
+
+
+
+
+
+
+
+
+
+
+
+
+// Define input schema for the database flow
+// const DbInputSchema = z.object({
+//   user: z.string(),
+//   host: z.string(),
+//   database: z.string(),
+//   password: z.string(),
+//   port: z.number(),
+// });
+
+// Define the PostgreSQL flow
+// export const postgresFlow = postgresFlow
 
 // Run the flow
-async function main() {
-  // Run the recipe generator flow
-  const recipe = await recipeGeneratorFlow({
-    ingredient: "avocado",
-    dietaryRestrictions: "vegetarian",
-  });
-  console.log("Recipe:", recipe);
+// async function main() {
+//   // Run the recipe generator flow
+//   const recipe = await recipeGeneratorFlow({
+//     ingredient: "avocado",
+//     dietaryRestrictions: "vegetarian",
+//   });
+//   console.log("Recipe:", recipe);
 
-  // Run the PostgreSQL flow
-  // Replace with your actual database connection details
-  const dbResult = await postgresFlow({
-    user: "your_user",
-    host: "your_host",
-    database: "your_database",
-    password: "your_password",
-    port: 5432,
-  });
-  console.log("Database Result:", dbResult);
-}
+//   // Run the PostgreSQL flow
+//   // Replace with your actual database connection details
+//   const dbResult = await postgresFlow({
+//     user: "postgres",
+//     host: "localhost",
+//     database: "crawl",
+//     password: "postgres",
+//     port: 5432,
+//   });
+//   console.log("Database Result:", dbResult);
+// }
 
-main().catch(console.error);
+// main().catch(console.error);
